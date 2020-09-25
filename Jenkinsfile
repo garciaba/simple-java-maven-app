@@ -12,16 +12,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
-                createDynatraceDeploymentEvent(
-                envId: 'Dynatrace_Xoel',
-                tagMatchRules: [
-                [
-                  meTypes: [[meType: 'HOST']],
-                  tags: [
-                        [context: 'CONTEXTLESS', KEY: 'Env', value: 'Dev']
-                ]
-              ]
-            ])
 			}
         }
         stage('Test') {
