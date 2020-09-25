@@ -16,9 +16,9 @@ pipeline {
                 envId: 'Dynatrace Tenant',
                 tagMatchRules: [
                 [
-                  meTypes: [[meType: 'SERVICE']],
+                  meTypes: [[meType: 'HOST']],
                   tags: [
-                        [context: 'CONTEXTLESS', KEY: 'environment']
+                        [context: 'CONTEXTLESS', KEY: 'Dev']
                 ]
               ]
             ])
