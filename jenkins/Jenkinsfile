@@ -13,7 +13,18 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test', 
+                container("curl") {
+                  script {
+                    def status = pushDynatraceDeploymentEvent (
+                      tagRule : tagMatchRules,
+                      customProperties : [
+                        [key: 'Jenkins Build Number', value: "${env.BUILD_ID}"],
+                        [key: 'Git commit', value: "${env.GIT_COMMIT}"]
+                      ]
+                    )
+                }
+        }
             }
             post {
                 always {
