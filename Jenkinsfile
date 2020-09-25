@@ -18,7 +18,7 @@ pipeline {
                 [
                   meTypes: [[meType: 'HOST']],
                   tags: [
-                        [context: 'CONTEXTLESS', KEY: 'Dev']
+                        [context: 'CONTEXTLESS', KEY: 'Env', value: 'Dev']
                 ]
               ]
             ])
