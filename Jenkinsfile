@@ -12,7 +12,16 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
-            }
+                createDynatraceDeploymentEvent(
+                envId: 'Dynatrace Tenant')
+                tagMatchRules: [
+                [
+                  meTypes: [[meType: 'SERVICE']],
+                  tags: [
+                        [context: 'CONTEXTLESS', KEY: 'environment']
+                ]
+              ]
+            ]}
         }
         stage('Test') {
             steps {
