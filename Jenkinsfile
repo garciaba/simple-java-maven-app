@@ -21,7 +21,8 @@ pipeline {
                         [context: 'CONTEXTLESS', KEY: 'environment']
                 ]
               ]
-            ]}
+            ])
+			}
         }
         stage('Test') {
             steps {
