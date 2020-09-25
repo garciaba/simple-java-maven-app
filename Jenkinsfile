@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'mvn -B -DskipTests clean package'
                 createDynatraceDeploymentEvent(
-                envId: 'Dynatrace Tenant')
+                envId: 'Dynatrace Tenant',
                 tagMatchRules: [
                 [
                   meTypes: [[meType: 'SERVICE']],
